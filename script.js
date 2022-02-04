@@ -157,57 +157,57 @@
 
 // DESAFIO ENTREGABLE PARA MIERCOLES 9/2
 // hice una pequeña calculadora
-let entrada;
-let cuenta = 0;
-let cuentaSuma = 0;
-let cuentaResta = 0;
-let cuentaDiv = 0;
-let cuentaMulti = 0;
-// let entrada = prompt("Vamos a hacer unas cuentas? Ingresá 'si' o 'no'");
-const suma = (num1, num2) => num1 + num2;
-const resta = (num1, num2) => num1 - num2;
-const division = (num1, num2) => num1 / num2;
-const multiplicacion = (num1, num2) => num1 * num2;
+// let entrada;
+// let cuenta = 0;
+// let cuentaSuma = 0;
+// let cuentaResta = 0;
+// let cuentaDiv = 0;
+// let cuentaMulti = 0;
+// // let entrada = prompt("Vamos a hacer unas cuentas? Ingresá 'si' o 'no'");
+// const suma = (num1, num2) => num1 + num2;
+// const resta = (num1, num2) => num1 - num2;
+// const division = (num1, num2) => num1 / num2;
+// const multiplicacion = (num1, num2) => num1 * num2;
 
-while(entrada != "no"){
-    if (cuenta < 1) {
-        ingresarNumero = parseInt(prompt("¿Hacemos unas cuentas? Ingresá un número"));  
-    } else {
-        ingresarNumero = parseInt(prompt("Ingresá un número"));  
-    }
-let ingresarNumeroSeg = parseInt(prompt("Ingresá otro número"));
-if (isNaN(ingresarNumero) || isNaN(ingresarNumeroSeg)) {
-    alert("Ingresá un número válido");
-} else {
-    let ingresarOp = prompt("Ingresá una operación (+, -, / o *)");
-       switch (ingresarOp) {
-           case "+":
-                alert(`El resultado es ${suma(ingresarNumero, ingresarNumeroSeg)}`);
-                cuenta++;
-                cuentaSuma++;
-                break;
-            case "-":
-                alert(`El resultado es ${resta(ingresarNumero, ingresarNumeroSeg)}`);
-                cuenta++;
-                cuentaResta++;
-                break;
-           case "/":
-                alert(`El resultado es ${division(ingresarNumero, ingresarNumeroSeg)}`);
-                cuenta++;
-                cuentaDiv++;
-                break;
-            case "*":
-                alert(`El resultado es ${multiplicacion(ingresarNumero, ingresarNumeroSeg)}`);
-                cuenta++;
-                cuentaMulti++;
-                break;
-           default:
-               alert("Ingresá una operación valida")
-               break;
-       }
-       entrada = prompt("¿Querés hacer otra cuenta?");
-}
-if (entrada == "no") {
-    alert(`Hiciste en total ${cuenta} cuenta/s. ${cuentaSuma} suma/s, ${cuentaResta} resta/s, ${cuentaDiv} division/es y ${cuentaMulti} multiplicacion/es`)
-}
-}
+// while(entrada != "no"){
+//     if (cuenta < 1) {
+//         ingresarNumero = parseInt(prompt("¿Hacemos unas cuentas? Ingresá un número"));  
+//     } else {
+//         ingresarNumero = parseInt(prompt("Ingresá un número"));  
+//     }
+// let ingresarNumeroSeg = parseInt(prompt("Ingresá otro número"));
+// if (isNaN(ingresarNumero) || isNaN(ingresarNumeroSeg)) {
+//     alert("Ingresá un número válido");
+// } else {
+//     let ingresarOp = prompt("Ingresá una operación (+, -, / o *)");
+//        switch (ingresarOp) {
+//            case "+":
+//                 alert(`El resultado es ${suma(ingresarNumero, ingresarNumeroSeg)}`);
+//                 cuenta++;
+//                 cuentaSuma++;
+//                 break;
+//             case "-":
+//                 alert(`El resultado es ${resta(ingresarNumero, ingresarNumeroSeg)}`);
+//                 cuenta++;
+//                 cuentaResta++;
+//                 break;
+//            case "/":
+//                 alert(`El resultado es ${division(ingresarNumero, ingresarNumeroSeg)}`);
+//                 cuenta++;
+//                 cuentaDiv++;
+//                 break;
+//             case "*":
+//                 alert(`El resultado es ${multiplicacion(ingresarNumero, ingresarNumeroSeg)}`);
+//                 cuenta++;
+//                 cuentaMulti++;
+//                 break;
+//            default:
+//                alert("Ingresá una operación valida")
+//                break;
+//        }
+//        entrada = prompt("¿Querés hacer otra cuenta?");
+// }
+// if (entrada == "no") {
+//     alert(`Hiciste en total ${cuenta} cuenta/s. ${cuentaSuma} suma/s, ${cuentaResta} resta/s, ${cuentaDiv} division/es y ${cuentaMulti} multiplicacion/es`)
+// }
+// }
