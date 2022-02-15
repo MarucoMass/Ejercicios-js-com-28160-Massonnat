@@ -155,7 +155,7 @@
 //###################################################################################
 //###################################################################################
 
-// DESAFIO ENTREGABLE PARA MIERCOLES 9/2
+///////////////////////// DESAFIO ENTREGABLE PARA MIERCOLES 9/2 /////////////////////
 // hice una pequeña calculadora
 // let entrada;
 // let cuenta = 0;
@@ -211,3 +211,123 @@
 //     alert(`Hiciste en total ${cuenta} cuenta/s. ${cuentaSuma} suma/s, ${cuentaResta} resta/s, ${cuentaDiv} division/es y ${cuentaMulti} multiplicacion/es`)
 // }
 // }
+
+// PRUEBA //
+// const nombres = ["Raul", "Jorge", "Miriam", "Anselmo", "Braulio"];
+// let ingresaNombre = prompt(`A quién vas a borrar de la lista? \n${nombres.join(", ")}`);
+
+// const borrarNombres = (nombre) => {
+//     let index = nombres.indexOf(nombre);
+//     if (index !== -1) {
+//         nombres.splice(index, 1)
+//     }
+// }
+// borrarNombres(ingresaNombre);
+// console.log(nombres);
+
+//###################################################################################
+//###################################################################################
+//###################################################################################
+
+//////////////////////// DESAFIO COMPLEMENTARIO 16/02 ///////////////////////////////
+let entrada;
+let ingresarNumero;
+let ingresarNumeroSeg;
+let ingresarOp;
+let resultado;
+let cuenta = 0;
+let cuentaSuma = 0;
+let cuentaResta = 0;
+let cuentaDiv = 0;
+let cuentaMulti = 0;
+const arrSumaTotal = [];
+const arrRestaTotal = [];
+const arrDivTotal = [];
+const arrMultiTotal = [];
+
+const preguntaNumero = () => {
+    if (cuenta < 1) {
+       ingresarNumero = parseInt(prompt("¿Hacemos unas cuentas? Ingresá un número"));  
+    } else {
+        ingresarNumero = parseInt(prompt("Ingresá un número"));  
+    }
+        ingresarNumeroSeg = parseInt(prompt("Ingresá otro número")); 
+}      
+      
+const preguntaOperacion = () => {
+    while (isNaN(ingresarNumero) || isNaN(ingresarNumeroSeg)) {
+        alert("Ingresá un número válido");
+        preguntaNumero();
+    }
+    do {
+        ingresarOp = prompt("Ingresá una operación (+, -, / o *)");
+        switch (ingresarOp) {
+            case "+":
+                resultado = ingresarNumero + ingresarNumeroSeg;
+                cuenta++;
+                cuentaSuma++;
+                const arrSuma = [ingresarNumero, ingresarOp, ingresarNumeroSeg, "=", resultado];
+                arrSumaTotal.push(arrSuma.join(" "));
+                 break;
+             case "-":
+                resultado = ingresarNumero - ingresarNumeroSeg;
+                cuenta++;
+                cuentaResta++;
+                const arrResta = [ingresarNumero, ingresarOp, ingresarNumeroSeg, "=", resultado];
+                arrRestaTotal.push(arrResta.join(" "));
+                 break;
+            case "/":
+                resultado = ingresarNumero / ingresarNumeroSeg;
+                cuenta++;
+                cuentaDiv++;
+                const arrDiv = [ingresarNumero, ingresarOp, ingresarNumeroSeg, "=", resultado];
+                arrDivTotal.push(arrDiv.join(" "));
+                 break;
+             case "*":
+                resultado = ingresarNumero * ingresarNumeroSeg;
+                cuenta++;
+                cuentaMulti++;
+                const arrMulti = [ingresarNumero, ingresarOp, ingresarNumeroSeg, "=", resultado];
+                arrMultiTotal.push(arrMulti.join(" "));
+                 break;
+            default:
+                alert("Ingresá una operación valida")
+                break;
+        }
+    } while (ingresarOp !== "+" && ingresarOp !== "-" && ingresarOp !== "/" && ingresarOp !== "*");
+
+}
+
+const mostrarTotal = () => {
+    alert(`El resultado es ${resultado}`)
+    entrada = confirm("¿Querés hacer otra cuenta?");
+    
+    if (entrada === false) {
+    alert(`Hiciste en total ${cuenta} cuenta/s:
+    \n ${cuentaSuma} suma/s
+    \n ${cuentaResta} resta/s
+    \n ${cuentaDiv} division/es
+    \n ${cuentaMulti} multiplicacion/es`)
+
+    alert(`Estas fueron las cuentas que hiciste:
+    \n Sumas: ${arrSumaTotal.join(" | ")}
+    \n Restas: ${arrRestaTotal.join(" | ")}
+    \n Divisiones: ${arrDivTotal.join(" | ")}
+    \n Multiplicaciones: ${arrMultiTotal.join(" | ")}`);
+    } else {
+        init();
+    }  
+}
+
+const init = () => {
+    preguntaNumero();
+    preguntaOperacion();
+    mostrarTotal();
+}
+init();
+
+
+
+
+
+
