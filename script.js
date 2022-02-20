@@ -430,29 +430,3 @@ const borrar = () => {
 
 
 
-
-// class Videojuego{
-//     constructor(id, nombre, precio){
-//         this.id = id;
-//         this.nombre = nombre;
-//         this.precio = parseFloat(precio);
-//     }
-// }
-// const videojuegoUno = new Videojuego(1, "Cuphead", 3000);
-// const videojuegoDos = new Videojuego(2, "Last of Us", 3500);
-// const videojuegoTres = new Videojuego(3, "Little Nightmares", 2000);
-// const videojuegoCuatro = new Videojuego(4, "Destiny 2", 2500);
-// const videojuegoCinco = new Videojuego(5, "Red Dead Redemption 2", 4000);
-// const arrVideojuegos = [videojuegoUno, videojuegoDos, videojuegoTres, videojuegoCuatro, videojuegoCinco];
-
-
-// let mostrarProductos;
-
-
-// arrVideojuegos.forEach(recorrerArreglo);
-
-
-// function recorrerArreglo() {
-//     mostrarProductos += index + item; 
-// }
-// alert(JSON.stringify(arrVideojuegos));
