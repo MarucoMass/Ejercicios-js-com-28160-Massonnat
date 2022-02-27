@@ -435,104 +435,171 @@
 
 //////////////////////// DESAFIO COMPLEMENTARIO 23/02 ///////////////////////////////
 // variables globales
-let arrCompra = []; // array que uso que para guardar las compras
-let arrPrecioCompra = []; // array que uso para calcular el precio
-let arrNombreCompra = []; // array que uso al ultimo para al funcion borrar porque por alguna razono no lo puedo hacer con arrCompra
-let total; // variable que uso para mostrar el total
-let mostrarProductos;
-let mostrarCompra = document.getElementById("mostrarCompra");
-let mostrarTotal = document.getElementById("mostrarTotal");
-class Videojuego{
-    constructor(id, nombre, precio){
-        this.id = id;
+// let arrCompra = []; // array que uso que para guardar las compras
+// let arrPrecioCompra = []; // array que uso para calcular el precio
+// let arrNombreCompra = []; // array que uso al ultimo para al funcion borrar porque por alguna razono no lo puedo hacer con arrCompra
+// let total; // variable que uso para mostrar el total
+// let mostrarProductos;
+// let mostrarCompra = document.getElementById("mostrarCompra");
+// let mostrarTotal = document.getElementById("mostrarTotal");
+// class Videojuego{
+//     constructor(id, nombre, precio){
+//         this.id = id;
+//         this.nombre = nombre;
+//         this.precio = precio;
+//     }
+// }
+// // objetos
+// const videojuegoUno = new Videojuego(1, "Cuphead", 3000);
+// const videojuegoDos = new Videojuego(2, "Last of Us", 3500);
+// const videojuegoTres = new Videojuego(3, "Little Nightmares", 2000);
+// const videojuegoCuatro = new Videojuego(4, "Destiny 2", 2500);
+// const videojuegoCinco = new Videojuego(5, "Red Dead Redemption 2", 4000);
+// let arrVideojuegos = [videojuegoUno, videojuegoDos, videojuegoTres, videojuegoCuatro, videojuegoCinco]; //array de objetos
+// const compra = () => {
+//     let preguntaCompra;
+//     let preguntaDeNuevo;
+//     let precioCompra;
+//     while (preguntaDeNuevo !== 2) {      
+//         preguntaCompra = parseInt(
+//             prompt(
+//             "Que juego vas a elegir? Escribe el número del juego que quieras. \n1) Cuphead \n2) Last of Us \n3) Little Nightmares \n4) Destiny 2 \n5) Red Dead Redemption 2"
+//             )); //pregunta para elija un numero
+//             const someId = arrVideojuegos.some(el => el.id === preguntaCompra); // busca el numero de id en el array de objeto para saber si es true
+
+//             if (someId === true) {
+//                 const finderId = arrVideojuegos.find(el => el.id === preguntaCompra); // busca la compra en el array
+//                 precioCompra = finderId.precio; // variable para tener guardado el precio de la compra individual
+//                 arrCompra.push(JSON.stringify(finderId)); // pushea a otro array las compras que vaya eligiendo
+//                 console.log(typeof arrCompra)
+//                 arrPrecioCompra.push(precioCompra); // pushea en un array el precio de todas las compras que vaya haciendo
+//                 arrNombreCompra.push(finderId); // pusheo el const que va encontrando lo que va eligiendo ocn el prompt
+//                 preguntaDeNuevo = parseInt(prompt("Desea llevar otro? \n\n1- Si \n2- No."));
+//             } else {
+//                 alert("Por favor ingresá uno de los números");
+//             }   
+//     } 
+// }
+// const muestraPrecio = () => {
+//     alert(`Estos son los juegos que compró:\n${arrCompra.join("\n")}`); // muestra los juegos elegidos. No se por que me los muestro ordenados uno abajo del otro y en la funcion borrar hago lo mismo y no sale asi
+
+//     total = arrPrecioCompra.reduce((a, b) => a + b, 0); // usa esta funcion de orden superior para sumar los precios del array
+//     // alert(`El total sería $${total}`);    
+//     mostrarTotal.innerHTML = "El total sería $" + total
+// }
+// const borrar = () => {
+//     let preguntar = true;
+//     let respuesta;
+//     let borrarJuego;
+//     let juegoEncontrado;
+//     let precioJuegoBorrado;
+//     while (preguntar) {        
+//         respuesta = parseInt(prompt("Desea eliminar un juego? \n\n1- Sí \n2- No."));
+//         if (respuesta == 1) {
+//             borrarJuego = parseInt(prompt(`Introduzca el id del juego a eliminar:\n${JSON.stringify(arrNombreCompra)}`));
+//             juegoEncontrado = arrNombreCompra.some(el => el.id === borrarJuego); // se fija es true o false la opcion elegida
+//             const borrarJuegoId = arrNombreCompra.find(el => el.id === borrarJuego); // busca el juego borrado
+//             const nombreJuegoBorrado = borrarJuegoId.nombre; // variable para guardar el nombre del juego borrado
+//             precioJuegoBorrado = borrarJuegoId.precio; // variable para guardar el precio del juego borrado
+//             if (juegoEncontrado == true) { 
+//                     alert(`Eliminaste a:\n${nombreJuegoBorrado}`);
+//                     // arrCompra = arrNombreCompra.filter(el => el.id !== borrarJuego); // pasa a un nuevo array todos los juegos menos el borrado
+//                     arrNombreCompra = arrNombreCompra.filter(el => el.id !== borrarJuego); // pasa a un nuevo array todos los juegos menos el borrado
+//                     alert(`Estos son los juegos que llevas ahora ${JSON.stringify(arrNombreCompra)}`);
+//                     // alert(`Estos son los juegos que llevas ahora:\n${arrCompra.join("\n")}`);
+//                     total = total - precioJuegoBorrado; // resto el precio del juego borrado al total de antes
+//                     // alert(`Ahora el total es de $${total}`);  
+//                     mostrarTotal.innerHTML = "Ahora el total es $" + total;
+//                 if (total == 0) {
+//                     alert("Ya no hay juegos en el carrito")
+//                     preguntar = false;
+//                 }
+//             } else {
+//                 alert("No se encontro el juego que desea eliminar.");
+//                 respuesta = parseInt(prompt("Desea eliminar un juego \n\n1- Sí \n2- No."));
+//             }
+//         } else if (respuesta == 2) {
+//             alert("Ha seleccionado no eliminar productos.");
+//             // alert(`Gracias por su compra. El total a abonar es $${total}`);
+//             arrNombreCompra.forEach((producto, indice) =>{
+//                 mostrarProductos += indice + ": " + JSON.stringify(producto) + "<br>";
+//             }); console.log(mostrarProductos)
+//             mostrarCompra.innerHTML = "Esta es tu compra:" + "<br>" + mostrarProductos
+//             mostrarTotal.innerHTML = "Gracias por su compra. El total a abonar es $" + total; 
+//             preguntar = false;
+//         } else {
+//             alert("Ha seleccionado una opción no válida introduzca (1) si desea eliminar un juego o (2) en caso contrario.");
+//             respuesta = parseInt(prompt("Desea eliminar un juego? \n\n1- Sí \n2- No."));
+//         }
+//     }
+// }
+//     compra();
+//     muestraPrecio();
+//     borrar();
+
+//###################################################################################
+//###################################################################################
+//###################################################################################
+
+//////////////////////// DESAFIO 28/02 ///////////////////////////////
+
+class Usuario {
+    constructor(nombre, apellido, edad, altura) {
         this.nombre = nombre;
-        this.precio = precio;
+        this.apellido = apellido;
+        this.edad = edad;
+        this.altura = parseFloat(altura);
     }
 }
-// objetos
-const videojuegoUno = new Videojuego(1, "Cuphead", 3000);
-const videojuegoDos = new Videojuego(2, "Last of Us", 3500);
-const videojuegoTres = new Videojuego(3, "Little Nightmares", 2000);
-const videojuegoCuatro = new Videojuego(4, "Destiny 2", 2500);
-const videojuegoCinco = new Videojuego(5, "Red Dead Redemption 2", 4000);
-let arrVideojuegos = [videojuegoUno, videojuegoDos, videojuegoTres, videojuegoCuatro, videojuegoCinco]; //array de objetos
-const compra = () => {
-    let preguntaCompra;
-    let preguntaDeNuevo;
-    let precioCompra;
-    while (preguntaDeNuevo !== 2) {      
-        preguntaCompra = parseInt(
-            prompt(
-            "Que juego vas a elegir? Escribe el número del juego que quieras. \n1) Cuphead \n2) Last of Us \n3) Little Nightmares \n4) Destiny 2 \n5) Red Dead Redemption 2"
-            )); //pregunta para elija un numero
-            const someId = arrVideojuegos.some(el => el.id === preguntaCompra); // busca el numero de id en el array de objeto para saber si es true
 
-            if (someId === true) {
-                const finderId = arrVideojuegos.find(el => el.id === preguntaCompra); // busca la compra en el array
-                precioCompra = finderId.precio; // variable para tener guardado el precio de la compra individual
-                arrCompra.push(JSON.stringify(finderId)); // pushea a otro array las compras que vaya eligiendo
-                console.log(typeof arrCompra)
-                arrPrecioCompra.push(precioCompra); // pushea en un array el precio de todas las compras que vaya haciendo
-                arrNombreCompra.push(finderId); // pusheo el const que va encontrando lo que va eligiendo ocn el prompt
-                preguntaDeNuevo = parseInt(prompt("Desea llevar otro? \n\n1- Si \n2- No."));
-            } else {
-                alert("Por favor ingresá uno de los números");
-            }   
-    } 
-}
-const muestraPrecio = () => {
-    alert(`Estos son los juegos que compró:\n${arrCompra.join("\n")}`); // muestra los juegos elegidos. No se por que me los muestro ordenados uno abajo del otro y en la funcion borrar hago lo mismo y no sale asi
+let formUsuarios = document.getElementById('formUsuarios')
+let botonUsuarios = document.getElementById('botonUsuarios')
+let divUsuarios = document.getElementById('divUsuarios')
 
-    total = arrPrecioCompra.reduce((a, b) => a + b, 0); // usa esta funcion de orden superior para sumar los precios del array
-    // alert(`El total sería $${total}`);    
-    mostrarTotal.innerHTML = "El total sería $" + total
-}
-const borrar = () => {
-    let preguntar = true;
-    let respuesta;
-    let borrarJuego;
-    let juegoEncontrado;
-    let precioJuegoBorrado;
-    while (preguntar) {        
-        respuesta = parseInt(prompt("Desea eliminar un juego? \n\n1- Sí \n2- No."));
-        if (respuesta == 1) {
-            borrarJuego = parseInt(prompt(`Introduzca el id del juego a eliminar:\n${JSON.stringify(arrNombreCompra)}`));
-            juegoEncontrado = arrNombreCompra.some(el => el.id === borrarJuego); // se fija es true o false la opcion elegida
-            const borrarJuegoId = arrNombreCompra.find(el => el.id === borrarJuego); // busca el juego borrado
-            const nombreJuegoBorrado = borrarJuegoId.nombre; // variable para guardar el nombre del juego borrado
-            precioJuegoBorrado = borrarJuegoId.precio; // variable para guardar el precio del juego borrado
-            if (juegoEncontrado == true) { 
-                    alert(`Eliminaste a:\n${nombreJuegoBorrado}`);
-                    // arrCompra = arrNombreCompra.filter(el => el.id !== borrarJuego); // pasa a un nuevo array todos los juegos menos el borrado
-                    arrNombreCompra = arrNombreCompra.filter(el => el.id !== borrarJuego); // pasa a un nuevo array todos los juegos menos el borrado
-                    alert(`Estos son los juegos que llevas ahora ${JSON.stringify(arrNombreCompra)}`);
-                    // alert(`Estos son los juegos que llevas ahora:\n${arrCompra.join("\n")}`);
-                    total = total - precioJuegoBorrado; // resto el precio del juego borrado al total de antes
-                    // alert(`Ahora el total es de $${total}`);  
-                    mostrarTotal.innerHTML = "Ahora el total es $" + total;
-                if (total == 0) {
-                    alert("Ya no hay juegos en el carrito")
-                    preguntar = false;
-                }
-            } else {
-                alert("No se encontro el juego que desea eliminar.");
-                respuesta = parseInt(prompt("Desea eliminar un juego \n\n1- Sí \n2- No."));
-            }
-        } else if (respuesta == 2) {
-            alert("Ha seleccionado no eliminar productos.");
-            // alert(`Gracias por su compra. El total a abonar es $${total}`);
-            arrNombreCompra.forEach((producto, indice) =>{
-                mostrarProductos += indice + ": " + JSON.stringify(producto) + "<br>";
-            }); console.log(mostrarProductos)
-            mostrarCompra.innerHTML = "Esta es tu compra:" + "<br>" + mostrarProductos
-            mostrarTotal.innerHTML = "Gracias por su compra. El total a abonar es $" + total; 
-            preguntar = false;
-        } else {
-            alert("Ha seleccionado una opción no válida introduzca (1) si desea eliminar un juego o (2) en caso contrario.");
-            respuesta = parseInt(prompt("Desea eliminar un juego? \n\n1- Sí \n2- No."));
-        }
+let arrayUsuarios = []
+
+formUsuarios.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    let nombre = document.getElementById('nombre').value
+    let apellido = document.getElementById('apellido').value
+    let edad = document.getElementById('edad').value
+    let altura = document.getElementById('altura').value
+
+    const usuario = new Usuario(nombre, apellido, edad, altura)
+    arrayUsuarios.push(usuario)
+
+    console.log(arrayUsuarios)
+    formUsuarios.reset()
+})
+
+botonUsuarios.addEventListener('click', () => {
+    if (arrayUsuarios !== 0) {
+        divUsuarios.innerHTML = ""
+        arrayUsuarios.forEach((usuario, indice) => {
+            divUsuarios.innerHTML += `
+                    <div class="card" id="producto${indice}" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuario ${indice}</h5>
+                            <p class="card-text">Nombre: ${usuario.nombre}</p>
+                            <p class="card-text">Apellido: ${usuario.apellido}</p>
+                            <p class="card-text">Edad: ${usuario.edad}</p>
+                            <p class="card-text">Altura: ${usuario.altura}</p>
+                            <button class="btn btn-secondary">Eliminar</button>
+                        </div>
+                    </div> `   
+            })
+    } else {
+        divUsuarios.innerHTML = "No hay usuarios ingresados"
     }
-}
-    compra();
-    muestraPrecio();
-    borrar();
+})
+
+divUsuarios.addEventListener('click', (e) => {
+    e.preventDefault();
+    console.log(e.target.tagName)
+    if(e.target.tagName ==='BUTTON'){
+        e.target.parentElement.parentElement.remove();
+        // arrayUsuarios = arrayUsuarios.filter(el => el.nombre !== usuario.nombre)
+
+  }
+})
