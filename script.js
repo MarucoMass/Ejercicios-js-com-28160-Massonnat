@@ -544,11 +544,12 @@
 //////////////////////// DESAFIO 28/02 ///////////////////////////////
 
 class Usuario {
-    constructor(nombre, apellido, edad, altura) {
+    constructor(nombre, apellido, email, edad, password) {
         this.nombre = nombre;
         this.apellido = apellido;
+        this.email = email;
         this.edad = edad;
-        this.altura = parseFloat(altura);
+        this.password = password;
     }
 }
 
@@ -557,20 +558,29 @@ let botonUsuarios = document.getElementById('botonUsuarios')
 let divUsuarios = document.getElementById('divUsuarios')
 
 let arrayUsuarios = []
+// localStorage.clear()
+if (localStorage.getItem('usuarios')) {
+    arrayUsuarios = JSON.parse(localStorage.getItem('usuarios'))
+} else {
+    localStorage.setItem('usuarios', JSON.stringify(arrayUsuarios))
+}
 
 formUsuarios.addEventListener('submit', (e) => {
     e.preventDefault()
 
     let nombre = document.getElementById('nombre').value
     let apellido = document.getElementById('apellido').value
+    let email = document.getElementById('email').value
     let edad = document.getElementById('edad').value
-    let altura = document.getElementById('altura').value
+    let password = document.getElementById('password').value
 
-    const usuario = new Usuario(nombre, apellido, edad, altura)
-    arrayUsuarios.push(usuario)
+    if (!arrayUsuarios.some(usuario => usuario.email == email)) {
+        const usuario = new Usuario(nombre, apellido, email, edad, password)
+        arrayUsuarios.push(usuario)
+        localStorage.setItem('usuarios', JSON.stringify(arrayUsuarios))
+        formUsuarios.reset()
+    }
 
-    console.log(arrayUsuarios)
-    formUsuarios.reset()
 })
 
 botonUsuarios.addEventListener('click', () => {
@@ -578,14 +588,13 @@ botonUsuarios.addEventListener('click', () => {
         divUsuarios.innerHTML = ""
         arrayUsuarios.forEach((usuario, indice) => {
             divUsuarios.innerHTML += `
-                    <div class="card" id="producto${indice}" style="width: 18rem;">
+                    <div class="card" id="usuario${indice}" style="width: 18rem;">
                         <div class="card-body">
                             <h5 class="card-title">Usuario ${indice}</h5>
                             <p class="card-text">Nombre: ${usuario.nombre}</p>
                             <p class="card-text">Apellido: ${usuario.apellido}</p>
                             <p class="card-text">Edad: ${usuario.edad}</p>
-                            <p class="card-text">Altura: ${usuario.altura}</p>
-                            <button class="btn btn-secondary">Eliminar</button>
+                            <button id="btn${indice} "class="btn btn-secondary">Eliminar</button>
                         </div>
                     </div> `   
             })
